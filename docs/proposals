@@ -1,0 +1,41 @@
+Proposal #1:
+Reddit Toxicity score:
+
+Overview: 
+An application that uses reddit’s API and oauth login, reads the user’s comment and post history, feeds it into OpenAI’s moderation API and uses the weights provided by the API to calculate an “online toxicity” score, where the higher the score the more “toxic” a user is on reddit. A database will be used to store this score and messages relating to the history such as “congratulations, your score has decreased by x points”.
+
+Databases:
+We will use MySQL, MongoDB or a similar database for storing the score history of each user, including login dates to the application, as well as possibly the categories of toxicity that has the most score impact on that user for personalized feedback.
+
+API usage:
+We will use the reddit API to fetch messages and comments, either for the users history or within a certain date range, set by the user through the GUI.
+
+This information will be passed to the Moderation endpoint of the OpenAI NLP API, which reads the messages and comments and calculates a set of scores ranging from 0 to 1 in a variety of categories of undesirable online traits such as messages including traces of harassment, hate, sexual content, violence or self-harm tendencies utilizing a GPT-based algorithm.
+
+The raw scores will be given different weights to calculate the final user’s toxicity score (for example, the impact of a message containing inappropriate remarks about minors would have a much higher impact than a message containing a rude remark about another user).
+
+OAuth:
+In order to read a user’s message or use the reddit API, OAuth2 authentication through reddit is required.
+
+Decoupled Architecture: 
+We will separate the front end GUI from the back end API accessing using some sort of abstraction layer, possibly flask or a similar interface.
+
+
+
+Proposal #2:
+Google Docs Notes based Study Question Generator
+
+Overview:
+An application that uses Google OAuth login and the Google Docs API to fetch notes taken for a certain class/lecture, passes it to the OpenAI ChatGPT API to generate study questions based on topics found in the document. 
+
+Databases:
+We will use databases to store the study questions generated for the user, allowing them to look back and review them between logins. 
+
+API usage:
+Let the user select documents from google docs then retrieve all selected documents from the Google Docs API. The information will then be passed into OpenAI ChatGPT API to generate and display the practice questions.
+
+OAuth:
+We are fetching notes taken for Google Docs, so we will use Google for authentication.
+
+Decoupled Architecture: 
+We will separate the front end GUI from the back end API accessing using some sort of abstraction layer, possibly flask or a similar interface.
