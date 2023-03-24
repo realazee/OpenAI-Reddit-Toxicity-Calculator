@@ -1,4 +1,11 @@
-Story: As a logged in user, I might want to view feedback about my toxicity history based on categories and time, so I can decrease my toxicity rating in focused areas. 
+Story: As a logged in user, I might want to view feedback about my toxicity history based on categories and time, 
+so I can decrease my toxicity rating in focused areas. 
 
 What this covers:
-If everything goes right, the user should be able to login to the app and then be able to interact with the page to redirect to a list of their score history, the amount of increase/decrease in the past month or whatever defined time frame, and also view feedback as to what categories of their toxicity are the worst so they can cater their actions to it. The score as mentioned earlier could be categorized into different ranges such as "excellent", "good", "fair", "poor", and "extremely poor". Each range would be associated with a numerical score, and users would be able to see which range they fall into based on their online behavior. The online toxicity score can be based on a number of factors such as the frequency of negative or offensive language used, the number of downvotes received on comments or posts, the number of reported posts or comments, and other relevant metrics that reflect the user's online behavior.
+If everything goes right, the user should be able to login to the app and then be able to interact with the page to redirect to a list of their score 
+history, the amount of increase/decrease in the past month or whatever defined time frame, and also view feedback as to what categories of their 
+toxicity are the worst so they can cater their actions to it. The score as mentioned earlier could be categorized into different ranges such as "excellent",
+"good", "fair", "poor", and "extremely poor". Each range would be associated with a numerical score, and users would be able to see which range 
+they fall into based on their online behavior. The online toxicity score can be based on a number of factors such as the frequency of negative 
+or offensive language used, the number of downvotes received on comments or posts, the number of reported posts or comments,
+and other relevant metrics that reflect the user's online behavior.
