@@ -26,9 +26,15 @@ def openAIHelper():
     openAIText = request.form.get('textToCheck')
     response = openai.Moderation.create(input=openAIText)
     output = response["results"][0]
-    hate = str(output["categories"]["hate"])
-    print(hate)
-    return render_template("openAI.html", result=hate)
+    hate = str(output["category_scores"]["hate"])
+    hate_threatening = str(output["category_scores"]["hate/threatening"])
+    self_harm = str(output["category_scores"]["self-harm"])
+    sexual = str(output["category_scores"]["sexual"])
+    sexual_minors = str(output["category_scores"]["sexual/minors"])
+    violence = str(output["category_scores"]["violence"])
+    violence_graphic = str(output["category_scores"]["violence/graphic"])
+    print(output)
+    return render_template("openAI.html", hate=hate, hate_threatening=hate_threatening, self_harm=self_harm, sexual=sexual, sexual_minors=sexual_minors, violence=violence, violence_graphic=violence_graphic)
 
 
 

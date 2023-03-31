@@ -6,11 +6,51 @@
     <div>
         Result
 
-        {% if result %}
-            <p>{{ result }}</p>
+        {% if hate %}
+            <p>{{ hate }}</p>
         {% else %}
             <p>Enter text to check</p>
         {% endif %}
+
+        {% if hate_threatening %}
+            <p>{{ hate_threatening }}</p>
+        {% else %}
+            <p>Enter text to check</p>
+        {% endif %}
+        
+        {% if self_harm %}
+            <p>{{ self_harm }}</p>
+        {% else %}
+            <p>Enter text to check</p>
+        {% endif %}
+
+        {% if sexual %}
+            <p>{{ sexual }}</p>
+        {% else %}
+            <p>Enter text to check</p>
+        {% endif %}
+
+        {% if sexual_minors %}
+            <p>{{ sexual_minors }}</p>
+        {% else %}
+            <p>Enter text to check</p>
+        {% endif %}
+
+        {% if violence %}
+            <p>{{ violence }}</p>
+        {% else %}
+            <p>Enter text to check</p>
+        {% endif %}
+
+        {% if violence_graphic %}
+            <p>{{ violence_graphic }}</p>
+        {% else %}
+            <p>Enter text to check</p>
+        {% endif %}
+
+
+
+
 
     </div>
 </body>
