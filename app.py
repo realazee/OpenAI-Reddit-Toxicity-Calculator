@@ -8,7 +8,7 @@ from flask import Flask, Response, request, render_template, redirect, url_for
 app = Flask(__name__, template_folder="templates", static_folder="static")
 secretFile = open("clientsecret.json", "r")
 secrets = json.load(secretFile)
-openai.api_key = os.getenv(secrets['secretKey'])
+openai.api_key = secrets['secretKey']
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -23,11 +23,12 @@ def loginHelper():
 
 @app.route("/openAI", methods=["GET", "POST"])
 def openAIHelper():
-    openAIText = request.form.get('checkText')
-    response = openai.Moderation.create(
-    input=openAIText,
-)
-    return render_template("openAI.html")
+    openAIText = request.form.get('textToCheck')
+    response = openai.Moderation.create(input=openAIText)
+    output = response["results"][0]
+    hate = str(output["categories"]["hate"])
+    print(hate)
+    return render_template("openAI.html", result=hate)
 
 
 
