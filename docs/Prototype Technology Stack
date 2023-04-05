@@ -1,0 +1,18 @@
+Prototype document (technology stack)
+
+For our technology stack, we decided to use flask as our primary backend along with react for front-end development and firebase for database management. 
+But we were also primarily considering using a tech stack comprising of node.js as a backend, angular for front-end, and firebase as our database. 
+We were pretty confident that firebase was going to end up being our database because it is very well documented, easy for beginners to learn, 
+and also integration is simple for many platforms. And also the key components of our project lies primarily in the backend and also the front end to 
+make our data visually appealing for the user to interpret.
+
+In terms of deciding between whether to use flask/react and angular/node.js, we were looking at performance, 
+ease of development (which one is easier to code specifically in relation to our team’s expertise), and also community and support. 
+In terms of ease of development for us, we had to give it to flask/react because flask is a python backend which a lot of our team have used extensively 
+before and between react and angular based on just some online research, many have said angular’s learning curve is a bit steeper but it is a lot more 
+structured for complex applications. In terms of performance, both are very quick but flask is very lightweight and also pretty flexible, so it is ideal 
+for smaller projects like ours. Both have very good communities and support but node is definitely more popular, but it is only a very small edge.
+
+Overall, both technology stacks we were considering are very robust for web apps, but because we have a relatively small project and we wanted 
+something that would be easy to develop with (python), we chose flask as our back end, react as our front-end, and firebase as our database.
+
