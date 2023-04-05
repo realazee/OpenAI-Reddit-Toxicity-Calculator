@@ -9,6 +9,7 @@ app = Flask(__name__, template_folder="templates", static_folder="static")
 secretFile = open("clientsecret.json", "r")
 secrets = json.load(secretFile)
 openai.api_key = secrets['secretKey']
+print(openai.api_key)
 
 
 @app.route("/", methods=["GET", "POST"])
