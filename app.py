@@ -4,6 +4,7 @@ import os
 import json
 import openai
 from flask import Flask, Response, request, render_template, redirect, url_for
+from oauth import getUserComments
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
 secretFile = open("clientsecret.json", "r")
@@ -20,7 +21,15 @@ def homeHelper():
 #page doesnt exist yet. will be created later
 @app.route("/login", methods=["GET", "POST"])
 def loginHelper():
-    return render_template("template.html")
+    return render_template("login.html")
+
+@app.route("/redditAuth", methods=["GET", "POST"])
+def redditHelper():
+    username = request.form.get('username')
+    password = request.form.get('password')
+    commentList = getUserComments(username, password, '')
+    print(commentList)
+    return render_template("homepage.html")
 
 @app.route("/openAI", methods=["GET", "POST"])
 def openAIHelper():
