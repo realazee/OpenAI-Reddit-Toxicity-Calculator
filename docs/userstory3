@@ -1,0 +1,10 @@
+As a reddit logged in user, I want to be able to view my toxicity data in a clean, 
+easy-to-use format so that I can understand how other people on reddit may perceive me.
+
+What this covers:
+Working in conjunction with User Stories 1 and 2, and if everything goes right, 
+the user will be able to log in using their reddit credentials, and immediately be presented with a tabulated view of their toxicity data 
+organized by different “toxic” categories and the percentage of how much the user exhibits these characteristics online. 
+The different categories will be: “hate”, “hate/threatening”, “self-harm”, “sexual”, “sexual/minors”, “violence”, “violence/graphics”. 
+By providing these characteristics in a clean, easy to understand format, the user will not feel overwhelmed by the data our app presents and 
+will help them understand their “weaknesses” and work to improve on them.

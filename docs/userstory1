@@ -1,0 +1,14 @@
+Story: As a reddit logged in user. I might want to view my online toxicity as a credit score-like score, 
+so I can estimate the perception of me as an online user. 
+
+What this covers:
+If everything goes right, the user should be able to login to the app through their reddit account, 
+then immediately see a numerical score on the home page, rating how toxic they might be on the internet, reddit specifically. 
+The score will be calculated based on their “toxicity” ratings in different categories which will be discussed in further detail later. 
+The score could be categorized into different ranges such as "excellent", "good", "fair", "poor", and "extremely poor".
+Each range would be associated with a numerical score, and users would be able to see which range they fall into based on their online behavior. 
+
+If the user cannot view their score, then they need to login again for the score to appear.
+
+Overall, the goal of this app would be to encourage users to be more mindful of their online behavior and strive to create a more positive and 
+welcoming online community.
