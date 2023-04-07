@@ -8,9 +8,6 @@ redditSecret = secrets['redditSecret']
 
 def getUserComments(redditUsername, redditPassword, searchedUser):
 
-    # redditUsername = 'cs411testacc'
-    # redditPassword = 'cs411Tester.'
-
     if searchedUser == '':
         searchedUser = redditUsername
 
