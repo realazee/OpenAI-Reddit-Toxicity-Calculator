@@ -1,0 +1,6 @@
+CREATE DATABASE IF NOT EXISTS toxicitycalc;
+USE toxicitycalc;
+
+DROP TABLE IF EXISTS Users CASCADE;
+DROP TABLE if EXISTS ScoreHistory CASCADE
+
