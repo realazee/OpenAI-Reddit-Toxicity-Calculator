@@ -6,6 +6,9 @@ secrets = json.load(secretFile)
 redditId = secrets['redditId']
 redditSecret = secrets['redditSecret']
 
+
+#given redditUsername of the user who is logged in, redditPassword of the user who is logged in, 
+#and searchedUser of the user whose comments we want to fetch, this function returns an array of comments left by searchedUser.
 def getUserComments(redditUsername, redditPassword, searchedUser):
 
     if searchedUser == '':
@@ -34,10 +37,11 @@ def getUserComments(redditUsername, redditPassword, searchedUser):
 
     print(me.json())
 
-
+    #this fetches the reddit comments left by searchedUser, filters it to 10 comments and stores it into userComments as a csv.
     userComments = requests.get('https://oauth.reddit.com/u/'+searchedUser+'/comments', headers=headers, params={'limit': '`10`'})
     commentResponse = userComments.json()
-
+    #commentlist is an array of comments left by searchedUser, each element is one comment. This is ultimately what gets passed into openAI.
+    #front end for this still needs to be done.
     commentList = [post['data']['body'] for post in commentResponse['data']['children']]
 
     return commentList
