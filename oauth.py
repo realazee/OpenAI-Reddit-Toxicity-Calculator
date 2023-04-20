@@ -8,7 +8,8 @@ redditSecret = secrets['redditSecret']
 
 
 #given redditUsername of the user who is logged in, redditPassword of the user who is logged in, 
-#and searchedUser of the user whose comments we want to fetch, this function returns an array of comments left by searchedUser.
+#and searchedUser of the user whose comments we want to fetch, this function authenticates redditUsername 
+#and returns an array of comments left by searchedUser.
 def getUserComments(redditUsername, redditPassword, searchedUser):
 
     if searchedUser == '':
