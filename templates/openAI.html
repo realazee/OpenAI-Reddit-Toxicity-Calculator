@@ -1,58 +1,26 @@
 <!doctype html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToxicityCheck Alpha A0.1 - Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
 <body>
     <div class="title">
         <h1>ToxicityCheck Beta 1.0</h1>
     </div>
-    <div>
-        Result
-        <!--add category names next to scores as well as the true false display next to the scores
-        later. We need to figure out a formula to use these numbers to compute a numerical credit value. --> 
+    <div id="content">
+        <h2>Result</h2>
+        <!-- Add category names next to scores and the true/false display next to the scores. -->
+        <!-- We need to figure out a formula to use these numbers to compute a numerical credit value. -->
 
-        {% if hate %}
-            <p>hate: {{ hate }}</p>
-        {% else %}
-            <p>Enter text to check</p>
-        {% endif %}
-
-        {% if hate_threatening %}
-            <p>hate_threatening: {{ hate_threatening }}</p>
-        {% else %}
-            <p>Enter text to check</p>
-        {% endif %}
-        
-        {% if self_harm %}
-            <p>self_harm: {{ self_harm }}</p>
-        {% else %}
-            <p>Enter text to check</p>
-        {% endif %}
-
-        {% if sexual %}
-            <p>sexual: {{ sexual }}</p>
-        {% else %}
-            <p>Enter text to check</p>
-        {% endif %}
-
-        {% if sexual_minors %}
-            <p>sexual_minors: {{ sexual_minors }}</p>
-        {% else %}
-            <p>Enter text to check</p>
-        {% endif %}
-
-        {% if violence %}
-            <p>violence: {{ violence }}</p>
-        {% else %}
-            <p>Enter text to check</p>
-        {% endif %}
-
-        {% if violence_graphic %}
-            <p>violence_graphic: {{ violence_graphic }}</p>
-        {% else %}
-            <p>Enter text to check</p>
-        {% endif %}
-
-
-
-
-
+        <!-- Display results using loop and conditional -->
+        {% for category, score in [('hate', hate), ('hate_threatening', hate_threatening), ('self_harm', self_harm), ('sexual', sexual), ('sexual_minors', sexual_minors), ('violence', violence), ('violence_graphic', violence_graphic)] %}
+            {% if score %}
+                <p>{{ category }}: {{ score }}</p>
+            {% else %}
+                <p>Enter text to check</p>
+            {% endif %}
+        {% endfor %}
     </div>
 </body>
