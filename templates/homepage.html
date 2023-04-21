@@ -10,8 +10,16 @@
             <label for="checkText">Check Text</label>
             <input type="submit" name="checkText" /><br />
         </form>
+        <form method="post" action="/oauth.py">
+            <label for="Name">Enter the user you want to check the toxicity of</label>
+            <input type="nameToCheck" name="nameToCheck" /><br />
+            <label for="checkUser">Check User</label>
+            <input type="submit" name="checkUser" /><br />
+        </form>
      </div>
-     <!--add a button that loads /login-->
+     
+    <a href="/login">Login</a>
+
      
      
 
