@@ -1,0 +1,23 @@
+<!doctype html>
+<head>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="title">
+        <h1>ToxicityCheck Beta 1.0</h1>
+    </div>
+    <div id="content">
+        <h2>Users that have been searched in the past</h2>
+        
+        {% for name in searchedUsers %}
+            <h3>{{name[0]}}</h3>
+        {% endfor %}
+       
+     </div>
+     
+
+
+     
+     
+
+</body>
