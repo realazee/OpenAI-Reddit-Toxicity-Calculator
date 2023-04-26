@@ -75,7 +75,34 @@ def oauthHelper():
     sexual_minors = str(output["category_scores"]["sexual/minors"])
     violence = str(output["category_scores"]["violence"])
     violence_graphic = str(output["category_scores"]["violence/graphic"])
-    return render_template("openAI.html", hate=hate, hate_threatening=hate_threatening, self_harm=self_harm, sexual=sexual, sexual_minors=sexual_minors, violence=violence, violence_graphic=violence_graphic)
+
+    #code to take results from openAI and create a credit score like system to show how toxic user is on internet
+    #user_toxicity_score = (hate * 25) + (hate_threatening * 50) + (self_harm * 100) + (sexual * 25) + (sexual_minors * 100) + (violence * 100) + (violence_graphic * 100)
+    hate_formatted = float("{:.6f}".format(float(hate)))
+    scaled_hate_formatted = 1.0 + (99 * (hate_formatted - 0) / (1 - 0))
+    hate_threatening_formatted = "{:.6f}".format(float(hate_threatening))
+    self_harm_formatted = "{:.6f}".format(float(self_harm))
+    sexual_formatted = "{:.6f}".format(float(sexual))
+    sexual_minors_formatted = "{:.6f}".format(float(sexual_minors))
+    violence_formatted = float("{:.6f}".format(float(violence)))
+    scaled_violence_formatted = 1.0 + (99 * (violence_formatted - 0) / (1 - 0))
+    violence_graphic_formatted = float("{:.6f}".format(float(violence_graphic)))
+    scaled_violence_graphic_formatted = 1.0 + (99 * (violence_graphic_formatted - 0) / (1 - 0))
+
+    print("Hate Formatted", hate_formatted)
+    print("Hate Formatted Scaled", scaled_hate_formatted)
+    print("Hate Threatening", hate_threatening_formatted)
+    print("Self Harm Formatted", self_harm_formatted)
+    print("Sexual Formatted", sexual_formatted)
+    print("Seuxal Minors Formatted", sexual_minors_formatted)
+    print("Violence Formatted", violence_formatted)
+    print("Violence Formatted Scaled", scaled_violence_formatted)
+    print("Violence Graphic Formatted", violence_graphic_formatted)
+    print("Violence Graphic Formatted Scaled", scaled_violence_graphic_formatted)
+
+    #return render_template("openAI.html", hate=hate, hate_threatening=hate_threatening, self_harm=self_harm, sexual=sexual, sexual_minors=sexual_minors, violence=violence, violence_graphic=violence_graphic)
+
+    return render_template("results.html")
     
 
 

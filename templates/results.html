@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToxicityCheck Alpha A0.1 - Results</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/highcharts-more.js"></script>
+  <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+</head>
+<body>
+<div class="title">
+    <h1>ToxicityCheck Beta 1.0</h1>
+</div>
+
+<style>
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .gauge {
+    width: calc(33.33% - 20px);
+    height: 500px;
+    margin: 10px;
+  }
+</style>
+
+<div class="container">
+  <div id="container1" class="gauge"></div>
+  <div id="container2" class="gauge"></div>
+  <div id="container3" class="gauge"></div>
+  <div id="container4" class="gauge"></div>
+  <div id="container5" class="gauge"></div>
+  <div id="container6" class="gauge"></div>
+</div>
+
+<!--
+<div id="container" style="width: 400px; height: 300px; margin: 0 auto"></div>
+-->
+<script>
+Highcharts.chart('container1', {
+    chart: {
+        type: 'gauge'
+    },
+    title: {
+        text: 'Hate'
+    },
+    pane: {
+        startAngle: -90,
+        endAngle: 90,
+        background: null
+    },
+    yAxis: {
+        min: 0,
+        max: 100,
+        lineWidth: 0,
+        tickPositions: [0, 50, 100],
+        minorTickLength: 0,
+        tickLength: 0,
+        labels: {
+            y: 16
+        },
+        title: {
+            text: 'Value'
+        },
+        plotBands: [{
+            from: 0,
+            to: 50,
+            color: '#DF5353' // red
+        }, {
+            from: 50,
+            to: 75,
+            color: '#DDDF0D' // yellow
+        }, {
+            from: 75,
+            to: 100,
+            color: '#55BF3B' // green
+        }]
+    },
+    series: [{
+        name: 'Value',
+        data: [80],
+        dataLabels: {
+            borderWidth: 0,
+            useHTML: true,
+            format:
+                '<div style="text-align:center">' +
+                '<span style="font-size:25px; color: black;">{y}</span><br/>' +
+                '<img src="https://www.highcharts.com/samples/graphics/arrow.png" ' +
+                'style="margin-top: 5px; transform: rotate({point.y / 100 * 180}deg);">' +
+                '</div>',
+            y: -50,
+            x: 0,
+            zIndex: 2,
+            borderRadius: 10,
+            padding: 10,
+            backgroundColor: 'white'
+        },
+    }],
+    plotOptions: {
+    gauge: {
+        tooltip: {
+        enabled: false
+    },
+        pivot: {
+            radius: 0
+        },
+        dial: {
+            backgroundColor: 'black',
+            baseLength: '0%',
+            baseWidth: 10,
+            radius: '80%',
+            rearLength: '0%',
+            topWidth: 1
+        }
+    },
+}
+});
+
+
+Highcharts.chart('container2', {
+
+chart: {
+    type: 'solidgauge',
+    marginTop: 50
+},
+
+title: {
+    text: 'Hate Threatening'
+},
+
+pane: {
+    center: ['50%', '75%'],
+    size: '140%',
+    startAngle: -90,
+    endAngle: 90,
+    background: {
+        backgroundColor: '#EEE',
+        innerRadius: '60%',
+        outerRadius: '100%',
+        shape: 'arc'
+    }
+},
+
+tooltip: {
+    enabled: false
+},
+
+// the value axis
+yAxis: {
+    stops: [
+        [0.2, '#DF5353'], // red
+        [0.4, '#DDDF0D'], // yellow
+        [0.6, '#55BF3B'], // green
+        [0.8, '#DDDF0D'], // yellow
+        [1, '#DF5353'] // red
+    ],
+    lineWidth: 0,
+    tickWidth: 0,
+    minorTickInterval: null,
+    tickAmount: 2,
+    title: {
+        y: -70
+    },
+    labels: {
+        y: 16
+    },
+    min: 1,
+    max: 5
+},
+
+plotOptions: {
+    solidgauge: {
+        dataLabels: {
+            y: 5,
+            borderWidth: 0,
+            useHTML: true
+        }
+    }
+},
+
+credits: {
+    enabled: false
+},
+
+series: [{
+    name: 'Gauge Chart',
+    data: [1],
+    dataLabels: {
+        format:
+            '<div style="text-align:center">' +
+            '<span style="font-size:25px">{y:.1f}</span><br/>' +
+            '<span style="font-size:12px;opacity:0.4">out of 5</span>' +
+            '</div>'
+    },
+    tooltip: {
+        valueSuffix: 'out of 5'
+    }
+}]
+});
+
+Highcharts.chart('container3', {
+
+chart: {
+    type: 'solidgauge',
+    marginTop: 50
+},
+
+title: {
+    text: 'Self Harm'
+},
+
+pane: {
+    center: ['50%', '75%'],
+    size: '140%',
+    startAngle: -90,
+    endAngle: 90,
+    background: {
+        backgroundColor: '#EEE',
+        innerRadius: '60%',
+        outerRadius: '100%',
+        shape: 'arc'
+    }
+},
+
+tooltip: {
+    enabled: false
+},
+
+// the value axis
+yAxis: {
+    stops: [
+        [0.2, '#DF5353'], // red
+        [0.4, '#DDDF0D'], // yellow
+        [0.6, '#55BF3B'], // green
+        [0.8, '#DDDF0D'], // yellow
+        [1, '#DF5353'] // red
+    ],
+    lineWidth: 0,
+    tickWidth: 0,
+    minorTickInterval: null,
+    tickAmount: 2,
+    title: {
+        y: -70
+    },
+    labels: {
+        y: 16
+    },
+    min: 1,
+    max: 5
+},
+
+plotOptions: {
+    solidgauge: {
+        dataLabels: {
+            y: 5,
+            borderWidth: 0,
+            useHTML: true
+        }
+    }
+},
+
+credits: {
+    enabled: false
+},
+
+series: [{
+    name: 'Gauge Chart',
+    data: [1],
+    dataLabels: {
+        format:
+            '<div style="text-align:center">' +
+            '<span style="font-size:25px">{y:.1f}</span><br/>' +
+            '<span style="font-size:12px;opacity:0.4">out of 5</span>' +
+            '</div>'
+    },
+    tooltip: {
+        valueSuffix: 'out of 5'
+    }
+}]
+});
+
+Highcharts.chart('container4', {
+
+chart: {
+    type: 'solidgauge',
+    marginTop: 50
+},
+
+title: {
+    text: 'Sexual Minors'
+},
+
+pane: {
+    center: ['50%', '75%'],
+    size: '140%',
+    startAngle: -90,
+    endAngle: 90,
+    background: {
+        backgroundColor: '#EEE',
+        innerRadius: '60%',
+        outerRadius: '100%',
+        shape: 'arc'
+    }
+},
+
+tooltip: {
+    enabled: false
+},
+
+// the value axis
+yAxis: {
+    stops: [
+        [0.2, '#DF5353'], // red
+        [0.4, '#DDDF0D'], // yellow
+        [0.6, '#55BF3B'], // green
+        [0.8, '#DDDF0D'], // yellow
+        [1, '#DF5353'] // red
+    ],
+    lineWidth: 0,
+    tickWidth: 0,
+    minorTickInterval: null,
+    tickAmount: 2,
+    title: {
+        y: -70
+    },
+    labels: {
+        y: 16
+    },
+    min: 1,
+    max: 5
+},
+
+plotOptions: {
+    solidgauge: {
+        dataLabels: {
+            y: 5,
+            borderWidth: 0,
+            useHTML: true
+        }
+    }
+},
+
+credits: {
+    enabled: false
+},
+
+series: [{
+    name: 'Gauge Chart',
+    data: [1],
+    dataLabels: {
+        format:
+            '<div style="text-align:center">' +
+            '<span style="font-size:25px">{y:.1f}</span><br/>' +
+            '<span style="font-size:12px;opacity:0.4">out of 5</span>' +
+            '</div>'
+    },
+    tooltip: {
+        valueSuffix: 'out of 5'
+    }
+}]
+});
+
+Highcharts.chart('container5', {
+
+chart: {
+    type: 'solidgauge',
+    marginTop: 50
+},
+
+title: {
+    text: 'Violence'
+},
+
+pane: {
+    center: ['50%', '75%'],
+    size: '140%',
+    startAngle: -90,
+    endAngle: 90,
+    background: {
+        backgroundColor: '#EEE',
+        innerRadius: '60%',
+        outerRadius: '100%',
+        shape: 'arc'
+    }
+},
+
+tooltip: {
+    enabled: false
+},
+
+// the value axis
+yAxis: {
+    stops: [
+        [0.2, '#DF5353'], // red
+        [0.4, '#DDDF0D'], // yellow
+        [0.6, '#55BF3B'], // green
+        [0.8, '#DDDF0D'], // yellow
+        [1, '#DF5353'] // red
+    ],
+    lineWidth: 0,
+    tickWidth: 0,
+    minorTickInterval: null,
+    tickAmount: 2,
+    title: {
+        y: -70
+    },
+    labels: {
+        y: 16
+    },
+    min: 1,
+    max: 5
+},
+
+plotOptions: {
+    solidgauge: {
+        dataLabels: {
+            y: 5,
+            borderWidth: 0,
+            useHTML: true
+        }
+    }
+},
+
+credits: {
+    enabled: false
+},
+
+series: [{
+    name: 'Gauge Chart',
+    data: [1],
+    dataLabels: {
+        format:
+            '<div style="text-align:center">' +
+            '<span style="font-size:25px">{y:.1f}</span><br/>' +
+            '<span style="font-size:12px;opacity:0.4">out of 5</span>' +
+            '</div>'
+    },
+    tooltip: {
+        valueSuffix: 'out of 5'
+    }
+}]
+});
+
+Highcharts.chart('container6', {
+
+chart: {
+    type: 'solidgauge',
+    marginTop: 50
+},
+
+title: {
+    text: 'Violence Graphic'
+},
+
+pane: {
+    center: ['50%', '75%'],
+    size: '140%',
+    startAngle: -90,
+    endAngle: 90,
+    background: {
+        backgroundColor: '#EEE',
+        innerRadius: '60%',
+        outerRadius: '100%',
+        shape: 'arc'
+    }
+},
+
+tooltip: {
+    enabled: false
+},
+
+// the value axis
+yAxis: {
+    stops: [
+        [0.2, '#DF5353'], // red
+        [0.4, '#DDDF0D'], // yellow
+        [0.6, '#55BF3B'], // green
+        [0.8, '#DDDF0D'], // yellow
+        [1, '#DF5353'] // red
+    ],
+    lineWidth: 0,
+    tickWidth: 0,
+    minorTickInterval: null,
+    tickAmount: 2,
+    title: {
+        y: -70
+    },
+    labels: {
+        y: 16
+    },
+    min: 1,
+    max: 5
+},
+
+plotOptions: {
+    solidgauge: {
+        dataLabels: {
+            y: 5,
+            borderWidth: 0,
+            useHTML: true
+        }
+    }
+},
+
+credits: {
+    enabled: false
+},
+
+series: [{
+    name: 'Gauge Chart',
+    data: [1],
+    dataLabels: {
+        format:
+            '<div style="text-align:center">' +
+            '<span style="font-size:25px">{y:.1f}</span><br/>' +
+            '<span style="font-size:12px;opacity:0.4">out of 5</span>' +
+            '</div>'
+    },
+    tooltip: {
+        valueSuffix: 'out of 5'
+    }
+}]
+});
+</script>
+
+</body>
+</html>
