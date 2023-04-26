@@ -11,11 +11,23 @@ from oauth import *
 import sys
 
 mysql = MySQL()
+
 app = Flask(__name__, template_folder="templates", static_folder="static")
 app.secret_key = "super secret key"
 secretFile = open("clientsecret.json", "r")
 secrets = json.load(secretFile)
 openai.api_key = secrets['secretKey']
+
+app.config['MYSQL_DATABASE_USER'] = 'root'
+app.config['MYSQL_DATABASE_PASSWORD'] = secrets['sqlPassword']
+app.config['MYSQL_DATABASE_DB'] = 'toxicitycalc'
+app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+mysql.init_app(app)
+
+conn = mysql.connect()
+cursor = conn.cursor()
+
+
 
 #authentication stuff
 login_manager = flask_login.LoginManager()
@@ -61,9 +73,17 @@ def redditHelper():
     login_user(user)
     return render_template("homepage.html")
 
+@app.route("/history", methods=["GET"])
+def historyHelper():
+    cursor.execute("SELECT username from searchedUsers")
+    searchedUsers = cursor.fetchall()
+    return render_template("history.html", searchedUsers=searchedUsers)
+
 @app.route("/oauth", methods=["POST"])
 def oauthHelper():
     nameToCheck = request.form.get('nameToCheck')
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO searchedUsers (userName) VALUES ('{0}') ON DUPLICATE KEY UPDATE username=username".format(nameToCheck))
     commentList = getUserComments(nameToCheck, current_user.id)
 
     response = openai.Moderation.create(input=str(commentList))
