@@ -9,6 +9,8 @@ import flask_login
 from flaskext.mysql import MySQL
 from oauth import *
 import sys
+import numpy as np
+import bisect
 
 mysql = MySQL()
 
@@ -96,33 +98,43 @@ def oauthHelper():
     violence = str(output["category_scores"]["violence"])
     violence_graphic = str(output["category_scores"]["violence/graphic"])
 
-    #code to take results from openAI and create a credit score like system to show how toxic user is on internet
-    #user_toxicity_score = (hate * 25) + (hate_threatening * 50) + (self_harm * 100) + (sexual * 25) + (sexual_minors * 100) + (violence * 100) + (violence_graphic * 100)
+    #code to take results from openAI and round to 6 decimal places for ease of usability
     hate_formatted = float("{:.6f}".format(float(hate)))
-    scaled_hate_formatted = 1.0 + (99 * (hate_formatted - 0) / (1 - 0))
-    hate_threatening_formatted = "{:.6f}".format(float(hate_threatening))
-    self_harm_formatted = "{:.6f}".format(float(self_harm))
-    sexual_formatted = "{:.6f}".format(float(sexual))
-    sexual_minors_formatted = "{:.6f}".format(float(sexual_minors))
+    hate_threatening_formatted = float("{:.6f}".format(float(hate_threatening)))
+    self_harm_formatted = float("{:.6f}".format(float(self_harm)))
+    sexual_formatted = float("{:.6f}".format(float(sexual)))
+    sexual_minors_formatted = float("{:.6f}".format(float(sexual_minors)))
     violence_formatted = float("{:.6f}".format(float(violence)))
-    scaled_violence_formatted = 1.0 + (99 * (violence_formatted - 0) / (1 - 0))
     violence_graphic_formatted = float("{:.6f}".format(float(violence_graphic)))
-    scaled_violence_graphic_formatted = 1.0 + (99 * (violence_graphic_formatted - 0) / (1 - 0))
 
-    print("Hate Formatted", hate_formatted)
-    print("Hate Formatted Scaled", scaled_hate_formatted)
-    print("Hate Threatening", hate_threatening_formatted)
-    print("Self Harm Formatted", self_harm_formatted)
-    print("Sexual Formatted", sexual_formatted)
-    print("Seuxal Minors Formatted", sexual_minors_formatted)
-    print("Violence Formatted", violence_formatted)
-    print("Violence Formatted Scaled", scaled_violence_formatted)
-    print("Violence Graphic Formatted", violence_graphic_formatted)
-    print("Violence Graphic Formatted Scaled", scaled_violence_graphic_formatted)
+    # Define a list and add data field into it
+    openAI_data = []
+    openAI_data.append(hate_formatted)
+    openAI_data.append(hate_threatening_formatted)
+    openAI_data.append(self_harm_formatted)
+    openAI_data.append(sexual_formatted)
+    openAI_data.append(sexual_minors_formatted)
+    openAI_data.append(violence_formatted)
+    openAI_data.append(violence_graphic_formatted)
+
+    # Define the intervals
+    intervals = [1e-6, 1.995e-6, 3.981e-6, 7.943e-6, 1.585e-5, 3.162e-5, 6.310e-5, 1.259e-4, 2.512e-4, 5.012e-4, 1e-3, 1.995e-3, 3.981e-3, 7.943e-3, 1.585e-2, 3.162e-2, 6.310e-2, 1.259e-1, 2.512e-1, 5.012e-1]
+
+    openAI_data_interval_score = []
+
+    # Use a for loop to loop through values in openAI_data and find which interval they fall under
+    for index, value in enumerate(openAI_data):
+         # Find the index of the interval that the value belongs to
+        intervalVal = bisect.bisect_left(intervals, value)
+        
+        # The 100 data range of gauge diagram is split apart into 20 regions
+        openAI_data_interval_score.append(intervalVal * 5)
+
 
     #return render_template("openAI.html", hate=hate, hate_threatening=hate_threatening, self_harm=self_harm, sexual=sexual, sexual_minors=sexual_minors, violence=violence, violence_graphic=violence_graphic)
 
-    return render_template("results.html")
+    return render_template("results.html", hate=openAI_data_interval_score[0], hate_threatening=openAI_data_interval_score[1], self_harm=openAI_data_interval_score[2], sexual=openAI_data_interval_score[3], sexual_minors=openAI_data_interval_score[4], violence=openAI_data_interval_score[5], violence_graphic=openAI_data_interval_score[6])
+
     
 
 
