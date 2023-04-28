@@ -99,13 +99,13 @@ def oauthHelper():
     violence_graphic = str(output["category_scores"]["violence/graphic"])
 
     #code to take results from openAI and round to 6 decimal places for ease of usability
-    hate_formatted = float("{:.6f}".format(float(hate)))
-    hate_threatening_formatted = float("{:.6f}".format(float(hate_threatening)))
-    self_harm_formatted = float("{:.6f}".format(float(self_harm)))
-    sexual_formatted = float("{:.6f}".format(float(sexual)))
-    sexual_minors_formatted = float("{:.6f}".format(float(sexual_minors)))
-    violence_formatted = float("{:.6f}".format(float(violence)))
-    violence_graphic_formatted = float("{:.6f}".format(float(violence_graphic)))
+    hate_formatted = float("{:.3f}".format(float(hate)))
+    hate_threatening_formatted = float("{:.3f}".format(float(hate_threatening)))
+    self_harm_formatted = float("{:.3f}".format(float(self_harm)))
+    sexual_formatted = float("{:.3f}".format(float(sexual)))
+    sexual_minors_formatted = float("{:.3f}".format(float(sexual_minors)))
+    violence_formatted = float("{:.3f}".format(float(violence)))
+    violence_graphic_formatted = float("{:.3f}".format(float(violence_graphic)))
 
     # Define a list and add data field into it
     openAI_data = []
@@ -117,9 +117,14 @@ def oauthHelper():
     openAI_data.append(violence_formatted)
     openAI_data.append(violence_graphic_formatted)
 
-    # Define the intervals
-    intervals = [1e-6, 1.995e-6, 3.981e-6, 7.943e-6, 1.585e-5, 3.162e-5, 6.310e-5, 1.259e-4, 2.512e-4, 5.012e-4, 1e-3, 1.995e-3, 3.981e-3, 7.943e-3, 1.585e-2, 3.162e-2, 6.310e-2, 1.259e-1, 2.512e-1, 5.012e-1]
+    #print("Hate Pre Format", hate)
+    #print("Hate Formatted", hate_formatted)
+    #print("Sexual Pre Format", sexual)
+    #print("Sexual Formatted", sexual_formatted)
 
+    # Define the intervals
+    #intervals = [1e-6, 1.995e-6, 3.981e-6, 7.943e-6, 1.585e-5, 3.162e-5, 6.310e-5, 1.259e-4, 2.512e-4, 5.012e-4, 1e-3, 1.995e-3, 3.981e-3, 7.943e-3, 1.585e-2, 3.162e-2, 6.310e-2, 1.259e-1, 2.512e-1, 5.012e-1]
+    intervals = np.linspace(0.01,1,20)
     openAI_data_interval_score = []
 
     # Use a for loop to loop through values in openAI_data and find which interval they fall under
